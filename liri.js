@@ -1,5 +1,7 @@
 //-------------------VARIABLES----------------------------------------------------
 
+require('dotenv').config()
+
 //Loading modules
 var Spotify = require('node-spotify-api');
 var request = require('request');
@@ -53,9 +55,9 @@ function processCommands(command, commandParam){
 
 function spotifyThis(song){
 
-	//If user has not specified a song , default to "Mmm Bop" Hansen
+	//If user has not specified a song , default to "Mmm-Bop" Hansen
 	if(song === ""){
-		song = "Mmm Bop";
+		song = "Mmm-Bop";
 	}
 
 	spotify.search({ type: 'track', query: song}, function(err, data) {
@@ -147,11 +149,10 @@ function doWhatItSays(){
 		}
 
 		var dataArr = data.split(',');
-
+		console.log(dataArr)
 		processCommands(dataArr[0], dataArr[1]);
 	});
 }
-
 
 
 //-------------------------MAIN PROCESS-------------------------------------------
